@@ -34,8 +34,7 @@ def resubmit():
         ('sessionMapID', 'sessionMapID-%s' % session_map_id),
     )
 
-    response = requests.get('https://lams.ntu.edu.sg/lams/tool/laasse10/learning/resubmit.do', 
-                                headers=headers, params=params, cookies=cookies)
+    response = requests.get('https://lams.ntu.edu.sg/lams/tool/laasse10/learning/resubmit.do', headers=headers, params=params, cookies=cookies)
 
 
 def sumbit(data):
@@ -57,7 +56,7 @@ def sumbit(data):
         ('isTimelimitExpired', 'false'),
     )
 
-    return requests.post('https://lams.ntu.edu.sg/lams/tool/laasse10/learning/submitAll.do', 
+    return requests.post('https://lams.ntu.edu.sg/lams/tool/laasse10/learning/submitAll.do',
                             headers=headers, params=params, cookies=cookies, data=data)
 
 
@@ -75,7 +74,7 @@ def main():
         if 'Next Activity' in response.text:
             print(data, file=sys.stderr)
             break
-        
+
         resubmit()
 
 
